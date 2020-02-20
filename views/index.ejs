@@ -1,0 +1,28 @@
+<!-- This template is used to show the list page  -->
+<%- include("./partials/header") %>
+<div class="container" style="margin-top: 2rem">
+    <div class="list-group">
+        <%   incidents.forEach(function(incident){%>
+        <a href="/incidents/<%= incident._id %>"
+            class="list-group-item list-group-item-action flex-column align-items-start ">
+            <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">
+                    <%if (incident.type == 1) { %>
+                    <span class="capitalize"> Jam </span>
+                    <% } %>
+                    <%if (incident.type == 2) { %>
+                    <span>Dangerous COnditions </span>
+                    <% } %>
+                    <%if (incident.type == 3) { %>
+                    <span>Lane closed </span>
+                    <% } %>
+                </h6>
+                <small class="severity"> delay : <%=  incident.delay %></small>
+            </div>
+            <p class="mb-1"><%=  incident.details %></p>
+            <small>magnitude : <%=  incident.magnitude %></small>
+        </a>
+        <%}); %>
+    </div>
+</div>
+<%- include("./partials/footer") %>

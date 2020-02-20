@@ -1,0 +1,26 @@
+<!-- This template is used to show the detail page  -->
+<%- include("./partials/header") %>
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="container  incidentContent" style="margin-top: 2rem mx-5">
+            <h6 class="card-title severity capitalize">
+               <%if (incident.type == 1) { %>
+                <span class="display-5 ">INCIDENT TYPE : JAM  </span>
+                <hr class="bg-dark">
+                <% } %>
+                <%if (incident.type == 2) { %>
+                    <span class="display-5 ">INCIDENT TYPE : Dangerous Conditions  </span>
+                    <hr class="bg-dark">
+                <% } %>
+                <%if (incident.type == 3) { %>
+                    <span class="display-5 ">INCIDENT TYPE : Lane Closed  </span>
+                    <hr class="bg-dark">
+                <% } %>
+            </h6>
+            <p class="card-text  "> <span class='text-muted'> Detail:  </span><%=  incident.details %></p>
+            <p class="card-text "> <span class='text-muted'>From:   </span> <%=  incident.from %></p>
+            <p class="card-text"> <span class='text-muted'>To:  </span> <%=  incident.to %></p>
+        </div>
+    </div>
+</div>
+<%- include("./partials/footer") %>
