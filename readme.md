@@ -1,4 +1,5 @@
-###Technology Used
+
+### Technology Used
 - Javascript
 - NodeJS
 -   ExpressJS
@@ -12,7 +13,7 @@
 -    INCIDENT DETAIL:  http://localhost:3000/incidents:id
 
 
-###Installation Dependencies
+### Installation Dependencies
 This App requires latest [Node.js](https://nodejs.org/) to run
 
 Install the dependencies and  start the server.
