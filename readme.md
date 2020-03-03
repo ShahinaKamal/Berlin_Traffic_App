@@ -6,6 +6,7 @@
 -   MongoDB
 -   RESTful Mock API
 -   EJS
+-   Leaflet Interactive Map Library (with rastor tile)
 
 ### HEROKU APP DEPLOYMENT URL :   https://shielded-citadel-78791.herokuapp.com/
 ### APP ROUTES/URL
