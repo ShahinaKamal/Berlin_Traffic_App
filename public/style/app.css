@@ -28,6 +28,7 @@ text-transform: uppercase;
 .incidentContent{
     border:2px solid gray;
     background-color: white;
+    padding: 20px;
 }
 .cp-text{ 
     color: rgba(0,0,0,.7);
@@ -35,3 +36,30 @@ text-transform: uppercase;
     font-size: 0.8em;
     line-height: 40px;
 }
+.topBar{
+    text-align:center;
+    background-color:#EA1C2C; 
+    font-weight: bold;
+}
+.list-group-item-action:active {
+    color: #bd2130;
+    background-color: rgb(232, 209, 214);
+}
+
+.backbutton{
+    float: left;
+    line-height: 0.5;
+    vertical-align: middle;
+    font-weight: 900;
+  
+        
+}
+.headBar{
+    background-color:#EA1C2C; 
+    font-weight: bold;
+        
+}
+#map {
+    height: 100%;
+    overflow: hidden;
+  }

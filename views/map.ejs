@@ -1,9 +1,58 @@
 <!-- This template is used to show the Map page  -->
 <%- include("./partials/header") %>
-<div class="container text-center">
-    <p class="d-none d-lg-block display-5 m-40 py-3" style="background-color:#EA1C2C; font-weight: bold;">Current
-        Traffic for Berlin, Germany</p>
-    <img src="images/berlin_map.png" class="img-fluid" style="border:0" height="328" id="lu_map"
-        title="Map of Berlin, Germany" alt="Map of Berlin, Germany"></img>
-</div>
+<div class="container text-center ">
+   <!--  This is to display top pagebar with back button -->
+
+    <div class="  display-5  py-3 topBar" > 
+        <a href="/incidents" class="btn btn-default  backbutton mx-4"><i class="fas fa-arrow-left"></i></button></a>
+        <span class="topBar">Current Traffic for Berlin, Germany</span>          
+    </div>
+    <div id="map"></div>
+        <input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="overlay.setOpacity(this.value)">
+    
+   <!--  Displaying the map with maptiles and marker on interactive map- using Leaflet library
+    clicking on marker will show the incident detail in callout or popup -->
+    <% if (markers) { %>
+    <script>
+        var populated = <%- JSON.stringify(markers) %> ;
+        var overlay;
+        function init() {
+            var mapBounds = new L.LatLngBounds(
+                new L.LatLng(52.07421387, 12.68511838),
+                new L.LatLng(52.8654449, 14.24402451));
+            var mapMinZoom = 7;
+            var mapMaxZoom = 11;
+          var map = L.map('map').setView([52.46982939,13.46457145], 9);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+          overlay = L.tileLayer('/maptiles/{z}/{x}/{y}.png', {
+              minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+              bounds: mapBounds,
+              opacity: 0.85
+            }).addTo(map);
+                        
+            var iconPath='/images/car-icon-red.png';
+           // var  iconShadow = 'images/leaf-shadow.png';
+
+            let DefaultIcon = L.icon({
+                iconUrl: iconPath,
+                iconSize:     [30, 40], // size of the icon
+                shadowSize:   [50, 64], // size of the shadow
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+                      
+            });
+                populated.forEach(function (input) {
+                    var xPos, yPos;
+                    console.log(JSON.stringify(input))
+                    xPos = input.x;
+                    yPos = input.y;
+                    details = input.details;
+                    L.marker([yPos, xPos], { icon: DefaultIcon }).addTo(map).bindPopup(details);
+            });         
+        }
+        setTimeout(function(){init();},500)
+      </script>
+   <% } %>
+      
 <%- include("./partials/footer") %>

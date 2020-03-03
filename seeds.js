@@ -69,14 +69,14 @@ var data = [
       "magnitude": 1
     }
   ];
-
+//This id used to populate the incidents collection
 function seedDB() {
      // Remove all incidents
     Incident.deleteMany({}, function (err) {
         if (err) {
             console.log(err);
         } else {
-            console.log("removed incidents!");
+           // console.log("removed incidents!");
             // add incident
             data.forEach(function (seed) {
                 Incident.create(seed, function (err, incident) {

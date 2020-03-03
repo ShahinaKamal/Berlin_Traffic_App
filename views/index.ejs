@@ -1,20 +1,24 @@
 <!-- This template is used to show the list page  -->
+<!-- <script>setInterval(function(){ window.location.reload(true); }, 2000);</script>  -->
 <%- include("./partials/header") %>
+
+
 <div class="container" style="margin-top: 2rem">
+    <p class=" display-5 py-3 topBar" >Traffic Incident List</p>
     <div class="list-group">
         <%   incidents.forEach(function(incident){%>
-        <a href="/incidents/<%= incident._id %>"
+        <a id="indexListItem" href="/incidents/<%= incident._id %>"
             class="list-group-item list-group-item-action flex-column align-items-start ">
             <div class="d-flex w-100 justify-content-between">
                 <h6 class="mb-1">
                     <%if (incident.type == 1) { %>
-                    <span class="capitalize"> Jam </span>
+                        <span class="severity capitalize"> Jam </span>
                     <% } %>
                     <%if (incident.type == 2) { %>
-                    <span>Dangerous COnditions </span>
+                        <span class="severity capitalize"> Dangerous COnditions </span>
                     <% } %>
                     <%if (incident.type == 3) { %>
-                    <span>Lane closed </span>
+                        <span class="severity capitalize">Lane closed </span>
                     <% } %>
                 </h6>
                 <small class="severity"> delay : <%=  incident.delay %></small>
